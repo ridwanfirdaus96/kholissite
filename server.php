@@ -24,6 +24,10 @@ if (isset($_POST['reg_user'])) {
     echo $email;
     $password_1 = mysqli_real_escape_string($db, $_POST["password_1"]);
     $password_2 = mysqli_real_escape_string($db, $_POST["password_2"]);
+    
+    $query = "INSERT INTO register (fullname, username, email)
+    VALUES('$fullname', '$username', '$email')";
+mysqli_query($db, $query);
     var_dump($_POST);
     print_r($_POST);
     if (empty($fullname)) { array_push($errors, "Full name is required");}
@@ -57,6 +61,8 @@ if (isset($_POST['reg_user'])) {
         $_SESSION['success'] = "You are now logged in";
         header('location: home.php');
     }
+    
+
     //add login
 
     if (isset($_POST['login_user'])){

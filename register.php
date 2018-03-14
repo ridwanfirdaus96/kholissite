@@ -3,12 +3,12 @@ include('header/header.php');
 include('server.php');?>
 
 
-  <form method="post" action="register.php">
+  <form method="POST" action="register.php">
   	<?php include('errors.php'); ?>
 <div class="field">
   <label class="label">Full Name</label>
   <div class="control">
-    <input class="input" type="text" placeholder="Text input" value="<?php echo $fullname;?>">
+    <input class="input" type="text" placeholder="Text input" name="fullname" value="<?php echo $fullname;?>">
   </div>
 </div>
 
@@ -88,3 +88,4 @@ include('server.php');?>
   </div>
 </div>
 <p> Already a member? <a href="login.php"> Sign in</a>
+</form>
