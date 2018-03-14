@@ -2,17 +2,20 @@
 include('header/header.php');
 include('server.php');?>
 
+
+  <form method="post" action="register.php">
+  	<?php include('errors.php'); ?>
 <div class="field">
   <label class="label">Full Name</label>
   <div class="control">
-    <input class="input" type="text" placeholder="Text input">
+    <input class="input" type="text" placeholder="Text input" value="<?php echo $fullname;?>">
   </div>
 </div>
 
 <div class="field">
   <label class="label">Username</label>
   <div class="control has-icons-left has-icons-right">
-    <input class="input is-success" type="text" placeholder="Text input" value="">
+    <input class="input is-success" type="text" placeholder="Text input" value="<?php echo $username;?>">
     <span class="icon is-small is-left">
       <i class="fas fa-user"></i>
     </span>
@@ -26,7 +29,7 @@ include('server.php');?>
 <div class="field">
   <label class="label">Email</label>
   <div class="control has-icons-left has-icons-right">
-    <input class="input is-danger" type="email" placeholder="Email input" value="">
+    <input class="input is-danger" type="email" placeholder="Email input" value="<?php echo $email;?>">
     <span class="icon is-small is-left">
       <i class="fas fa-envelope"></i>
     </span>
@@ -39,7 +42,17 @@ include('server.php');?>
 
 <div class="field">
   <p class="control has-icons-left">
-    <input class="input" type="password" placeholder="Password">
+    <input class="input" type="password" placeholder="Password" name="password_1">
+    <span class="icon is-small is-left">
+      <i class="fas fa-lock"></i>
+    </span>
+  </p>
+</div>
+
+
+<div class="field">
+  <p class="control has-icons-left">
+    <input class="input" type="password" placeholder="Password" name="password_2">
     <span class="icon is-small is-left">
       <i class="fas fa-lock"></i>
     </span>
@@ -71,9 +84,7 @@ include('server.php');?>
 
 <div class="field is-grouped">
   <div class="control">
-    <button class="button is-link">Submit</button>
-  </div>
-  <div class="control">
-    <button class="button is-text">Cancel</button>
+    <button class="button is-link" name="reg_user">Register</button>
   </div>
 </div>
+<p> Already a member? <a href="login.php"> Sign in</a>
