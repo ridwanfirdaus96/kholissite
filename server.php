@@ -25,10 +25,10 @@ if (isset($_POST['reg_user'])) {
     $password_1 = mysqli_real_escape_string($db, $_POST["password_1"]);
     $password_2 = mysqli_real_escape_string($db, $_POST["password_2"]);
     
-    $query = "INSERT INTO register (fullname, username, email)
-    VALUES('$fullname', '$username', '$email')";
-mysqli_query($db, $query);
-    var_dump($_POST);
+    $query = "INSERT INTO `register` (fullname, username, email, password)
+    VALUES('$fullname', '$username', '$email', '$password')";
+    mysqli_query($db, $query);
+    var_dump($_POST);   
     print_r($_POST);
     if (empty($fullname)) { array_push($errors, "Full name is required");}
     if (empty($username)) { array_push($errors, "Username is required"); }

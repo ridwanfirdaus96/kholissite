@@ -34,6 +34,12 @@ if (isset($_SESSION['success'])) :?>
 </h3>
 </div>
 <?php endif ?>
+
+<!-- logged in user information -->
+<?php if (isset($_SESSION['username'])) :?>
+<p>welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
+<p> <a href="home.php?logout='1'" style="color:red;">Logout</a></p>
+<?php endif ?>
 </body>
 </html>
 
