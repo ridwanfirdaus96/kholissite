@@ -1,7 +1,8 @@
 <?php
 include('header/header.php');
-require_once('auth.php');
+require_once("auth.php");
 ?>
+
 <section class="section">
     <div class="container">
       <h1 class="title">
