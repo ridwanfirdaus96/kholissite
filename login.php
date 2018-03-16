@@ -1,14 +1,46 @@
 <?php
 include('header/header.php');
-include('server.php');?>
+require_once("server.php");
+
+    //add login
+    if (isset($_POST['login_user'])){
+      $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+      $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+
+
+      $query = "SELECT * FROM register WHERE username=:username OR email=:email";
+      $stmt = $db->prepare($query);
+
+      //bind parameter ke query
+      $params = array(
+          ":username" => $username,
+          ":email"    => $username
+      );
+      
+      $stmt->execute($params);
+      $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+      //jika user terdaftar
+      if($user){
+          //verifikasi password
+          if(password_verify($password, $user["password"])){
+              //buat session
+              session_start();
+              $_SESSION["user"] = $user;
+              //login sukses, alihkan halaman ke home
+              header("location: home.php");
+          }
+      }
+  }
+?>
 
  
- <form method="post" action="login.php">
+ <form method="POST" action="">
   	<?php include('errors.php'); ?>
       <div class="field">
   <label class="label">Username</label>
   <div class="control has-icons-left has-icons-right">
-    <input class="input is-success" type="text" placeholder="Text input" value="<?php echo $username;?>">
+    <input class="input is-success" type="text" placeholder="Text input" name="username">
     <span class="icon is-small is-left">
       <i class="fas fa-user"></i>
     </span>
@@ -21,7 +53,7 @@ include('server.php');?>
 
 <div class="field">
   <p class="control has-icons-left">
-    <input class="input" type="password" placeholder="Password" name="password_1">
+    <input class="input" type="password" placeholder="Password" name="password">
     <span class="icon is-small is-left">
       <i class="fas fa-lock"></i>
     </span>
