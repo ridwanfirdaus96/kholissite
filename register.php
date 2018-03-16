@@ -17,7 +17,7 @@ if (isset($_POST['reg_user'])) {
   if (empty($password)) { array_push($errors, "password is required"); }
  
 
-      $query = "INSERT INTO register (fullname, username, email, password)
+      $query = "INSERT INTO users (fullname, username, email, password)
                 VALUES (:fullname, :username, :email, :password)";
       $stmt = $db->prepare($query);
       

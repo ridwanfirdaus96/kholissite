@@ -3,12 +3,12 @@ include('header/header.php');
 require_once("server.php");
 
   //add login
-  if (isset($_POST['login_user'])){
+  if (isset($_POST['login'])){
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
 
-    $query = "SELECT * FROM register WHERE username=:username OR email=:email";
+    $query = "SELECT * FROM users WHERE username=:username OR email=:email";
     $stmt = $db->prepare($query);
 
     //bind parameter ke query
@@ -59,7 +59,7 @@ require_once("server.php");
 </div>
 
 <div class="input-group">
-  		<button type="submit" class="btn" name="login_user">Login</button>
+  		<button type="submit" class="btn" name="login">Login</button>
   	</div>
   	<p>
   		Not yet a member? <a href="register.php">Sign up</a>
